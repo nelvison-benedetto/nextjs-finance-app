@@ -1,3 +1,4 @@
+import Button1 from "@/shared/components/atoms/Button1";
 import AppHeader from "@/shared/components/layout/AppHeader";
 import Transaction from "@/shared/components/organisms/Transaction";
 import TransactionSummary from "@/shared/components/organisms/TransactionSummary";
@@ -52,6 +53,13 @@ export default function Page(){
                     </div>
                 </div>
 
+                <div>
+                    <h2 className="mb-4 text-lg font-mono">Transaction Summary</h2>
+                    <hr className="mb-4 border-gray-200 dark:border-gray-800" />
+                    <div className="space-y-4">
+                        <Button1>Hello</Button1>
+                    </div>
+                </div>
 
             </div>
         </>
