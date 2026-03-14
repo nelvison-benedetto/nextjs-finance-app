@@ -1,5 +1,6 @@
 import AppHeader from "@/shared/components/layout/AppHeader";
 import Transaction from "@/shared/components/organisms/Transaction";
+import TransactionSummary from "@/shared/components/organisms/TransactionSummary";
 import Trend from "@/shared/components/organisms/Trend";
 
 export default function Page(){
@@ -30,13 +31,27 @@ export default function Page(){
                 <div>
                     <h2 className="mb-4 text-lg font-mono">Transaction</h2>
                     <hr className="mb-4 border-gray-200 dark:border-gray-800" />
-                    <div className="">
+                    <div className="space-y-4">
                         <Transaction type="Income" description="Salary" amount={1000} />
                         <Transaction type="Expenses" category="Food" description="Going out to eat" amount={29} />
                         <Transaction type="Saving" description="For children" amount={500} />
                         <Transaction type="Investment" description="In Nvidia" amount={9000} />
                     </div>
                 </div>
+
+                <div>
+                    <h2 className="mb-4 text-lg font-mono">Transaction Summary</h2>
+                    <hr className="mb-4 border-gray-200 dark:border-gray-800" />
+                    <div className="space-y-4">
+                        <TransactionSummary date="2026-03-20" amount={1000} />
+                        <Transaction type="Income" description="Salary" amount={1000} />
+                        <hr className="mb-4 border-gray-200 dark:border-gray-800" />
+                        <Transaction type="Expenses" category="Food" description="Going out to eat" amount={29} />
+                        <Transaction type="Saving" description="For children" amount={500} />
+                        <Transaction type="Investment" description="In Nvidia" amount={9000} />
+                    </div>
+                </div>
+
 
             </div>
         </>
