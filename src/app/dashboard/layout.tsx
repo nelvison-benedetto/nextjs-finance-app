@@ -7,7 +7,7 @@ export default function DashboardLayout({
 }>) {
     return (
         <>
-            <AppHeader />
+            <AppHeader className="mt-8"/>
             <main>
                 {children}
             </main>
