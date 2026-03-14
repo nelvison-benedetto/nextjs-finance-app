@@ -7,7 +7,7 @@ import Trend from "@/shared/components/organisms/Trend";
 export default function Page(){
     return (
         <>
-            <div className="space-y-8">
+            <div className="space-y-8 mb-44">
                 <h1 className="text-4xl mt-8">Playground</h1>
 
                 <div>
@@ -54,7 +54,7 @@ export default function Page(){
                 </div>
 
                 <div>
-                    <h2 className="mb-4 text-lg font-mono">Transaction Summary</h2>
+                    <h2 className="mb-4 text-lg font-mono">Buttons</h2>
                     <hr className="mb-4 border-gray-200 dark:border-gray-800" />
                     <div className="space-y-4">
                         <Button1>Hello</Button1>
