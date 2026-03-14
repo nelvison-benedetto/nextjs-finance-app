@@ -1,4 +1,5 @@
 import AppHeader from "@/shared/components/layout/AppHeader";
+import Transaction from "@/shared/components/organisms/Transaction";
 import Trend from "@/shared/components/organisms/Trend";
 
 export default function Page(){
@@ -20,9 +21,20 @@ export default function Page(){
                     <hr className="mb-4 border-gray-200 dark:border-gray-800" />
                     <div className="flex space-x-8">
                         <Trend type="Income" amount={1000} prevAmount={900} />
-                        <Trend type="Expense" amount={1200} prevAmount={1300} />
+                        <Trend type="Expenses" amount={1200} prevAmount={1300} />
                         <Trend type="Investment" amount={7000} prevAmount={11000} />
                         <Trend type="Saving" amount={5000} prevAmount={900} />
+                    </div>
+                </div>
+
+                <div>
+                    <h2 className="mb-4 text-lg font-mono">Transaction</h2>
+                    <hr className="mb-4 border-gray-200 dark:border-gray-800" />
+                    <div className="">
+                        <Transaction type="Income" description="Salary" amount={1000} />
+                        <Transaction type="Expenses" category="Food" description="Going out to eat" amount={29} />
+                        <Transaction type="Saving" description="For children" amount={500} />
+                        <Transaction type="Investment" description="In Nvidia" amount={9000} />
                     </div>
                 </div>
 

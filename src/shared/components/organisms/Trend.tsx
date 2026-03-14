@@ -1,8 +1,11 @@
+import { useCurrencyFormat } from '@/shared/hooks/useCurrencyFormat';
 import { ArrowDownLeft, ArrowUpRight } from 'lucide-react';
 import { useMemo } from 'react';
 
+
+type TrendType = 'Income' | 'Expenses' | 'Investment' | 'Saving';
 type TrendProps = {
-  type: string
+  type: TrendType
   amount: number
   prevAmount?: number
 }
@@ -22,8 +25,9 @@ export default function Trend(
         if(prevAmount || !amount) return 0;
         return ((amount - prevAmount)/ prevAmount) * 100;
      }
-     const formatCurrency = (amount:number) => new Intl.NumberFormat('en-US', {style: 'currency', currency: 'EUR'}).format(amount);
-      
+
+    const formattedCurrency =  useCurrencyFormat(amount); //utilizzo il mio custom hooks!
+
     const percentageChange = useMemo(()=> calcPercentageChange(amount, prevAmount ?? 0).toFixed(0), [amount, prevAmount]
 );
 
@@ -31,12 +35,12 @@ export default function Trend(
     return (
         <>
             <div className={`font-semibold ${colorClasses[type]}`}>{type}</div>
-            <div className="text-2xl font-semibold text-black dark:text-white mb-2">{amount ? formatCurrency(amount) : formatCurrency(0)}</div>
+            <div className="text-2xl font-semibold text-black dark:text-white mb-2">{formattedCurrency}</div>
             <div className="flex space-x-1 items-center text-sm">
 
                 <div>
-                    {percentageChange <= 0 && <ArrowDownLeft className="text-red-700 dark:text-red-300" />}
-                    {percentageChange > 0 && <ArrowUpRight className="text-green-700 dark:text-green-300" />}
+                    {Number(percentageChange) <= 0 && <ArrowDownLeft className="text-red-700 dark:text-red-300" />}
+                    {Number(percentageChange) > 0 && <ArrowUpRight className="text-green-700 dark:text-green-300" />}
                     {percentageChange}% vs last period
                 </div>
             </div>
