@@ -1,4 +1,5 @@
 import Button1 from "@/shared/components/atoms/Button1";
+import Label1 from "@/shared/components/atoms/Label1";
 import AppHeader from "@/shared/components/layout/AppHeader";
 import Transaction from "@/shared/components/organisms/Transaction";
 import TransactionSummary from "@/shared/components/organisms/TransactionSummary";
@@ -70,7 +71,7 @@ export default function Page(){
                 <div>
                     <h2 className="mb-4 text-lg font-mono">Forms</h2>
                     <hr className="mb-4 border-gray-200 dark:border-gray-800" />
-                    <div className="griid grid-cols-2 gap-4">
+                    <div className="grid grid-cols-2 gap-4">
                         <div>
                             <label className="text-gray-700 dark:text-gray-300 block mb-1">Your Name</label>
                             <input type="text" placeholder="Type something in here..." className="w-full rounded-md shadow-sm border-gray-300 bg-white dark:border-gray-700 dark:bg-gray-950" />
@@ -86,8 +87,8 @@ export default function Page(){
                         </div>
 
                         <div className="flex items-center">
-                            <input type="checkbox" className="rounded border-gray-300 text-gray-700 bg-white dark:bg-gray-950 dark:text-gray-500 shadow-sm" />
-                            <label className="text-gray-700 dark:text-gray-300  ml-2">Your Name</label>
+                            <input type="checkbox" className="rounded border-gray-300 text-gray-700 bg-white dark:bg-gray-950 dark:text-gray-500 shadow-sm" id="terms" />
+                            <Label1 className="ml-2" htmlFor="terms">Accept Terms</Label1>
                         </div>
 
                     </div>
