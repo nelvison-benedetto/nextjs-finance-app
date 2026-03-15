@@ -45,7 +45,7 @@ export default function TransactionItem({type, category, description, amount}: T
 
                 <div className="flex items-center mr-4 grow">
                     <IconComponent size={20} className={`${colors} mr-2 w-4 h-4 hidden sm:block`} />
-                    <span>{description} </span>    
+                    <span>{description}</span>
                 </div>
 
                 <div className="min-w-[150px] items-center hidden md:flex">

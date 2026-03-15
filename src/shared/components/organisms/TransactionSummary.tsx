@@ -1,12 +1,12 @@
 
 import { useCurrencyFormat } from "@/shared/hooks/useCurrencyFormat";
 
-type TransazionSummaryProps = Readonly<{
-    date: string, 
+type TransactionSummaryProps = Readonly<{
+    date: string,
     amount: number
 }>
 
-export default function TransactionSummary({date, amount} : TransazionSummaryProps){ 
+export default function TransactionSummary({date, amount} : TransactionSummaryProps){
 
     const formattedAmount = useCurrencyFormat(amount);
 
