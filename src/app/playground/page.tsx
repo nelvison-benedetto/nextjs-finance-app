@@ -4,6 +4,8 @@ import AppHeader from "@/shared/components/layout/AppHeader";
 import Transaction from "@/shared/components/organisms/Transaction";
 import TransactionSummary from "@/shared/components/organisms/TransactionSummary";
 import Trend from "@/shared/components/organisms/Trend";
+import Select1 from "@/shared/components/atoms/Select1";
+import Input1 from "@/shared/components/atoms/Input1";
 
 export default function Page(){
     return (
@@ -75,15 +77,16 @@ export default function Page(){
                         <div>
                             <Label1>Name</Label1>
                             <input type="text" placeholder="Type something in here..." className="w-full rounded-md shadow-sm border-gray-300 bg-white dark:border-gray-700 dark:bg-gray-950" />
+                            <Input1 type="text" placeholder="Type something in here..."></Input1>
                         </div>
 
                         <div>
                             <Label1>City</Label1>
-                            <select  className="w-full rounded-md shadow-sm border-gray-300 bg-white dark:border-gray-700 dark:bg-gray-950" >
+                            <Select1>
                                 <option value="">Warsaw</option>
                                 <option value="">Madrid</option>
                                 <option value="">London</option>
-                            </select>
+                            </Select1>
                         </div>
 
                         <div className="flex items-center">
