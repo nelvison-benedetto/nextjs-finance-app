@@ -1,4 +1,5 @@
 import Button1 from "@/shared/components/atoms/Button1";
+import Separator1 from "@/shared/components/atoms/Separator1";
 import Label1 from "@/shared/components/atoms/Label1";
 import AppHeader from "@/shared/components/layout/AppHeader";
 import Transaction from "@/shared/components/organisms/TransactionItem";
@@ -15,7 +16,7 @@ export default function Page(){
 
                 <div>
                     <h2 className="mb-4 text-lg font-mono">App Header</h2>
-                    <hr className="mb-4 border-gray-200 dark:border-gray-800" />
+                    <Separator1 />
                     <div>
                         <AppHeader />
                     </div>
@@ -23,7 +24,7 @@ export default function Page(){
 
                 <div>
                     <h2 className="mb-4 text-lg font-mono">Trend</h2>
-                    <hr className="mb-4 border-gray-200 dark:border-gray-800" />
+                    <Separator1 />
                     <div className="flex space-x-8">
                         <Trend type="Income" amount={1000} prevAmount={900} />
                         <Trend type="Expenses" amount={1200} prevAmount={1300} />
@@ -34,7 +35,7 @@ export default function Page(){
 
                 <div>
                     <h2 className="mb-4 text-lg font-mono">Transaction</h2>
-                    <hr className="mb-4 border-gray-200 dark:border-gray-800" />
+                    <Separator1 />
                     <div className="space-y-4">
                         <Transaction type="Income" description="Salary" amount={1000} />
                         <Transaction type="Expenses" category="Food" description="Going out to eat" amount={29} />
@@ -45,11 +46,11 @@ export default function Page(){
 
                 <div>
                     <h2 className="mb-4 text-lg font-mono">Transaction Summary</h2>
-                    <hr className="mb-4 border-gray-200 dark:border-gray-800" />
+                    <Separator1 />
                     <div className="space-y-4">
                         <TransactionSummary date="2026-03-20" amount={1000} />
                         <Transaction type="Income" description="Salary" amount={1000} />
-                        <hr className="mb-4 border-gray-200 dark:border-gray-800" />
+                        <Separator1 />
                         <Transaction type="Expenses" category="Food" description="Going out to eat" amount={29} />
                         <Transaction type="Saving" description="For children" amount={500} />
                         <Transaction type="Investment" description="In Nvidia" amount={9000} />
@@ -58,7 +59,7 @@ export default function Page(){
 
                 <div>
                     <h2 className="mb-4 text-lg font-mono">Buttons</h2>
-                    <hr className="mb-4 border-gray-200 dark:border-gray-800" />
+                    <Separator1 />
                     <div className="space-y-4">
                         <Button1>Hello</Button1>
                         <Button1 variant="outline">Hello</Button1>
@@ -72,7 +73,7 @@ export default function Page(){
 
                 <div>
                     <h2 className="mb-4 text-lg font-mono">Forms</h2>
-                    <hr className="mb-4 border-gray-200 dark:border-gray-800" />
+                    <Separator1 />
                     <div className="grid grid-cols-2 gap-4">
                         <div>
                             <Label1>Name</Label1>

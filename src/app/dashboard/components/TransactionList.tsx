@@ -1,5 +1,6 @@
 import TransactionItem from "@/shared/components/organisms/TransactionItem";
 import TransactionSummary from "@/shared/components/organisms/TransactionSummary";
+import Separator1 from "@/shared/components/atoms/Separator1";
 
 const groupAndSumTransactionsByDate = (transactions: any[]) => {
     const grouped: Record<string, { transactions: any[]; amount: number }> = {};
@@ -27,7 +28,7 @@ export default async function TransactionList() {
             {Object.entries(grouped).map(([date, {transactions, amount}]) => (
                 <div key={date}>
                     <TransactionSummary date={date} amount={amount}/>
-                    <hr className="my-4 border-gray-200 dark:border-gray-800" />
+                    <Separator1 />
                     <section className="space-y-4">
                         {transactions.map((transaction: any) => (
                             <div key={transaction.id}>
