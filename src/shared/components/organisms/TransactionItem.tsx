@@ -32,7 +32,7 @@ const typesMap: Record<
   },
 }
 
-export default function Transaction({type, category, description, amount}: TransactionProps) {
+export default function TransactionItem({type, category, description, amount}: TransactionProps) {
 
     const IconComponent = typesMap[type].icon
     const colors = typesMap[type].colors

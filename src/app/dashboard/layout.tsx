@@ -11,7 +11,7 @@ export default function DashboardLayout({
             <main>
                 {children}
             </main>
-            <footer>Footer</footer>
+            <footer className="mt-auto">Footer</footer>
         </>
     );
 }
