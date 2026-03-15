@@ -73,12 +73,12 @@ export default function Page(){
                     <hr className="mb-4 border-gray-200 dark:border-gray-800" />
                     <div className="grid grid-cols-2 gap-4">
                         <div>
-                            <label className="text-gray-700 dark:text-gray-300 block mb-1">Your Name</label>
+                            <Label1>Name</Label1>
                             <input type="text" placeholder="Type something in here..." className="w-full rounded-md shadow-sm border-gray-300 bg-white dark:border-gray-700 dark:bg-gray-950" />
                         </div>
 
                         <div>
-                            <label className="text-gray-700 dark:text-gray-300 block mb-1">City</label>
+                            <Label1>City</Label1>
                             <select  className="w-full rounded-md shadow-sm border-gray-300 bg-white dark:border-gray-700 dark:bg-gray-950" >
                                 <option value="">Warsaw</option>
                                 <option value="">Madrid</option>
