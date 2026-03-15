@@ -1,15 +1,15 @@
 import Link from "next/link";
 import ToggleDarkMode from "@/shared/components/molecules/ToogleDarkMode";
-import useServerDarkMode from "@/shared/hooks/useServerDarkMode";
+import { getServerTheme } from "@/shared/hooks/useServerDarkMode";
 
-export default function AppHeader({className}: Readonly<{className?: string}>) {
+export default async function AppHeader({className}: Readonly<{className?: string}>) {
 
-    const theme = useServerDarkMode();
+    const theme = await getServerTheme();
 
     return (
         <>
             <header className={`flex justify-between items-center ${className}`}>
-                <Link href="/dashboard" className="text-xl hover:underline underline-offset-8 decoration-2">Finanace App</Link>
+                <Link href="/dashboard" className="text-xl hover:underline underline-offset-8 decoration-2">Finance App</Link>
                 <div className="flex items-center space-x-4">
                     <ToggleDarkMode defaultMode={theme} />
                     <div>User Dropdown</div>
