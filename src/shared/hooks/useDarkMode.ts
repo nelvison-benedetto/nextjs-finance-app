@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useCookies } from "react-cookie";
 
-type Theme = "light" | "dark";
+export type Theme = "light" | "dark";
 
 export const useDarkMode = (defaultTheme: Theme = "dark") => {
   const [theme, setTheme] = useState<Theme>(defaultTheme);
