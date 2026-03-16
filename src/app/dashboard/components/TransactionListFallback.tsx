@@ -3,23 +3,35 @@ import Skeleton from "@/shared/components/atoms/Skeleton";
 function TransactionGroupSkeleton() {
     return (
         <div>
-            {/* TransactionSummary skeleton */}
-            <div className="flex justify-between py-2">
-                <Skeleton className="w-24 h-4" />
-                <Skeleton className="w-16 h-4" />
+            {/* TransactionSummary: grow (date) + min-w-[70px] (amount) + min-w-[50px] (spacer) */}
+            <div className="flex text-gray-500 font-semibold">
+                <div className="grow">
+                    <Skeleton className="w-24 h-4" />
+                </div>
+                <div className="min-w-[70px] flex justify-end">
+                    <Skeleton className="w-14 h-4" />
+                </div>
+                <div className="min-w-[50px]" />
             </div>
+
             {/* Separator */}
             <div className="border-t border-gray-200 dark:border-gray-700 my-2" />
-            {/* TransactionItems skeleton */}
+
+            {/* TransactionItems: grow (icon+desc) + min-w-[150px] (category) + min-w-[70px] (amount) + min-w-[50px] (spacer) */}
             <section className="space-y-4">
                 {Array.from({ length: 3 }).map((_, i) => (
-                    <div key={i} className="flex items-center justify-between gap-4">
-                        <Skeleton className="w-8 h-8 rounded-full" />
-                        <div className="flex-1 space-y-2">
-                            <Skeleton className="w-1/3 h-4" />
-                            <Skeleton className="w-1/4 h-3" />
+                    <div key={i} className="w-full flex items-center">
+                        <div className="flex items-center mr-4 grow">
+                            <Skeleton className="w-4 h-4 mr-2" />
+                            <Skeleton className="w-32 h-4" />
                         </div>
-                        <Skeleton className="w-16 h-4" />
+                        <div className="min-w-[150px] hidden md:flex">
+                            <Skeleton className="w-16 h-5 rounded-md" />
+                        </div>
+                        <div className="min-w-[70px] flex justify-end">
+                            <Skeleton className="w-14 h-4" />
+                        </div>
+                        <div className="min-w-[50px]" />
                     </div>
                 ))}
             </section>

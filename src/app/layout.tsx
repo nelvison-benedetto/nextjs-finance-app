@@ -15,8 +15,18 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Finance App - Udemy",
-  description: "finance traking app",
+  title: {
+    default: "Finance App",
+    template: "%s | Finance App",
+  },
+  description: "Personal finance tracking app — manage income, expenses, savings and investments.",
+  keywords: ["finance", "budget", "transactions", "savings", "investments"],
+  authors: [{ name: "Finance App" }],
+  openGraph: {
+    title: "Finance App",
+    description: "Personal finance tracking app — manage income, expenses, savings and investments.",
+    type: "website",
+  },
 };
 
 export default async function RootLayout({

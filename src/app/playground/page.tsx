@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Button1 from "@/shared/components/atoms/Button1";
 import Separator1 from "@/shared/components/atoms/Separator1";
 import Label1 from "@/shared/components/atoms/Label1";
@@ -8,6 +9,11 @@ import Trend from "@/shared/components/organisms/Trend";
 import Select1 from "@/shared/components/atoms/Select1";
 import Input1 from "@/shared/components/atoms/Input1";
 import Skeleton from "@/shared/components/atoms/Skeleton";
+
+export const metadata: Metadata = {
+    title: "Playground",
+    description: "Component playground for testing and previewing UI elements.",
+};
 
 export default function Page(){
     return (
