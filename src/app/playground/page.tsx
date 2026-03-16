@@ -7,6 +7,7 @@ import TransactionSummary from "@/shared/components/organisms/TransactionSummary
 import Trend from "@/shared/components/organisms/Trend";
 import Select1 from "@/shared/components/atoms/Select1";
 import Input1 from "@/shared/components/atoms/Input1";
+import Skeleton from "@/shared/components/atoms/Skeleton";
 
 export default function Page(){
     return (
@@ -97,6 +98,17 @@ export default function Page(){
 
                     </div>
                 </div>
+
+                <div>
+                    <h2 className="mb-4 text-lg font-mono">Skeleton</h2>
+                    <Separator1 />
+                    <div className="flex space-y-8">
+                        <Skeleton />
+                        <Skeleton />
+                        <Skeleton />
+                    </div>
+                </div>
+
 
             </div>
         </>
