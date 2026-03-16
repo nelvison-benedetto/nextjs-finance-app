@@ -4,47 +4,102 @@ import Label1 from "@/shared/components/atoms/Label1";
 import Select1 from "@/shared/components/atoms/Select1";
 import { categories, types } from "@/shared/utils/consts";
 
-export default function TransactionForm() {
-    return (
-        <>
-            <form className="space-y-4">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                        <Label1 className="mb-1">Type</Label1>
-                        <Select1>
-                            {types.map(type => <option key={type}>{type}</option>)}
-                        </Select1>
-                    </div>
+export default function TransactionForm({initialData}) {
+  const {
+    register,
+    handleSubmit,
+    watch,
+    setValue,
+    formState: { errors },
+  } = useForm({
+    mode: "onTouched",
+    resolver: zodResolver(transactionSchema),
+    defaultValues: initialData ?? {
+      created_at: new Date().toISOString().split('T')[0]
+    }
+  })
+  const router = useRouter()
+  const [isSaving, setSaving] = useState(false)
+  const [lastError, setLastError] = useState()
+  const type = watch("type")
+  const editing = Boolean(initialData)
 
-                    <div>
-                        <Label1 className="mb-1">Category</Label1>
-                        <Select1>
-                            {categories.map(category => <option key={category}>{category}</option>)}
-                        </Select1>
-                    </div>
+  const onSubmit = async (data) => {
+    setSaving(true)
+    setLastError()
+    try {
+      if (editing) {
+        await updateTransaction(
+          initialData.id,
+          data
+        )
+      } else {
+        await createTransaction(data)
+      }
+      router.push('/dashboard')
+    } 
+    catch (error) {
+      setLastError(error)
+    }
+    finally {
+      setSaving(false)
+    }
+  }
 
-                    <div>
-                        <Label1 className="mb-1">Transaction Date</Label1>
-                        <Input1 />
-                    </div>
+  return <form className="space-y-4"
+    onSubmit={handleSubmit(onSubmit)}>
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div>
+        <Label className="mb-1">Type</Label>
+        <Select {...register("type", {
+          onChange: (e) => {
+            if (e.target.value !== "Expense") {
+              setValue("category", "")
+            }
+          }
+        })}>
+          {types.map(type => <option key={type}>
+            {type}
+          </option>)}
+        </Select>
+        <FormError error={errors.type} />
+      </div>
 
-                    <div>
-                        <Label1 className="mb-1">Amount</Label1>
-                        <Input1 type="number"/>
-                    </div>
+      <div>
+        <Label className="mb-1">Category</Label>
+        <Select {...register("category")} disabled={type !== 'Expense'}>
+          <option value="">Select a category</option>
+          {categories.map(category => <option key={category}>
+            {category}
+          </option>)}
+        </Select>
+        <FormError error={errors.category} />
+      </div>
 
-                    <div className="col-span-2">
-                        <Label1 className="mb-1">Description</Label1>
-                        <Input1 type="number"/>
-                    </div>
+      <div>
+        <Label className="mb-1">Date</Label>
+        <Input {...register("created_at")} disabled={editing} />
+        <FormError error={errors.created_at} />
+      </div>
 
-                </div>
+      <div>
+        <Label className="mb-1">Amount</Label>
+        <Input type="number" {...register("amount")} />
+        <FormError error={errors.amount} />
+      </div>
 
-                <div className="flex justify-end">
-                    <Button1 type="submit">Submit</Button1>
-                </div>
+      <div className="col-span-1 md:col-span-2">
+        <Label className="mb-1">Description</Label>
+        <Input {...register("description")} />
+        <FormError error={errors.description} />
+      </div>
+    </div>
 
-            </form>
-        </>
-    );
+    <div className="flex justify-between items-center">
+      <div>
+        {lastError && <FormError error={lastError} />}
+      </div>
+      <Button type="submit" disabled={isSaving}>Save</Button>
+    </div>
+  </form>
 }
