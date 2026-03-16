@@ -1,5 +1,5 @@
 'use client'
-import { useCurrencyFormat } from '@/shared/hooks/useCurrencyFormat';
+import { formatCurrency } from '@/shared/utils/formatCurrency';
 import { ArrowDownLeft, ArrowUpRight } from 'lucide-react';
 import { useMemo } from 'react';
 
@@ -18,7 +18,7 @@ export default function Trend(
         'Income': 'text-green-700 dark:text-green-300',
         'Expenses': 'text-red-500 dark:text-red-400',
         'Investment': 'text-indigo-700 dark:text-indigo-300',
-        'Saving': 'text-yellow-700 dark:text-green-300',
+        'Saving': 'text-yellow-700 dark:text-yellow-300',
     };
 
     const calcPercentageChange = (amount: number, prevAmount: number) => {
@@ -26,7 +26,7 @@ export default function Trend(
         return ((amount - prevAmount) / prevAmount) * 100;
     }
 
-    const formattedCurrency = useCurrencyFormat(amount);
+    const formattedCurrency = formatCurrency(amount);
 
     const percentageChange = useMemo(() => calcPercentageChange(amount, prevAmount ?? 0).toFixed(0), [amount, prevAmount]);
 

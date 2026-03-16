@@ -1,5 +1,6 @@
-import { useCurrencyFormat } from "@/shared/hooks/useCurrencyFormat";
+import { formatCurrency } from "@/shared/utils/formatCurrency";
 import { HandCoins, Wallet, Landmark, PiggyBank } from "lucide-react";
+import type { ElementType } from "react";
 
 type TransactionType = "Income" | "Expenses" | "Saving" | "Investment";
 
@@ -12,7 +13,7 @@ type TransactionProps = {
 
 const typesMap: Record<
   TransactionType,
-  { icon: React.ElementType; colors: string }
+  { icon: ElementType; colors: string }
 > = {
   Income: {
     icon: HandCoins,
@@ -37,7 +38,7 @@ export default function TransactionItem({type, category, description, amount}: T
     const IconComponent = typesMap[type].icon
     const colors = typesMap[type].colors
 
-    const formattedAmount = useCurrencyFormat(amount)
+    const formattedAmount = formatCurrency(amount)
 
     return(
         <>

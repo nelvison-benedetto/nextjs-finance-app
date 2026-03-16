@@ -84,8 +84,7 @@ export default function Page(){
                     <div className="grid grid-cols-2 gap-4">
                         <div>
                             <Label1>Name</Label1>
-                            <input type="text" placeholder="Type something in here..." className="w-full rounded-md shadow-sm border-gray-300 bg-white dark:border-gray-700 dark:bg-gray-950" />
-                            <Input1 type="text" placeholder="Type something in here..."></Input1>
+                            <Input1 type="text" placeholder="Type something in here..." />
                         </div>
 
                         <div>
@@ -108,7 +107,7 @@ export default function Page(){
                 <div>
                     <h2 className="mb-4 text-lg font-mono">Skeleton</h2>
                     <Separator1 />
-                    <div className="flex space-y-8">
+                    <div className="flex flex-col space-y-8">
                         <Skeleton />
                         <Skeleton />
                         <Skeleton />

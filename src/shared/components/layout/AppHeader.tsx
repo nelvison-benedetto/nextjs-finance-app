@@ -1,5 +1,5 @@
 import Link from "next/link";
-import ToggleDarkMode from "@/shared/components/molecules/ToogleDarkMode";
+import ToggleDarkMode from "@/shared/components/molecules/ToggleDarkMode";
 import { getServerTheme } from "@/shared/hooks/useServerDarkMode";
 
 export default async function AppHeader({className}: Readonly<{className?: string}>) {
