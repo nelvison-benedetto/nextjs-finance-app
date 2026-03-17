@@ -1,5 +1,5 @@
 'use client'
-import { formatCurrency } from '@/shared/utils/formatCurrency';
+import { formatCurrency } from '@/lib/formatCurrency';
 import { ArrowDownLeft, ArrowUpRight } from 'lucide-react';
 import { useMemo } from 'react';
 

@@ -1,5 +1,5 @@
 import { ButtonHTMLAttributes } from "react";
-import { variants, sizes } from "@/shared/utils/variants";
+import { variants, sizes } from "@/lib/variants";
 
 type ButtonVariant = "default" | "outline" | "ghost";
 type ButtonSize = "xs" | "sm" | "base" | "lg";

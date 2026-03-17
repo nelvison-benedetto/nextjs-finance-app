@@ -1,12 +1,12 @@
 
-import { formatCurrency } from "@/shared/utils/formatCurrency";
+import { formatCurrency } from "@/lib/formatCurrency";
 
 type TransactionSummaryProps = Readonly<{
     date: string,
     amount: number
 }>
 
-export default function TransactionSummary({date, amount} : TransactionSummaryProps){
+export default function TransactionSummaryItem({date, amount} : TransactionSummaryProps){
 
     const formattedAmount = formatCurrency(amount);
 

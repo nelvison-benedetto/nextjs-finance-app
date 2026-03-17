@@ -2,7 +2,7 @@ import Button1 from "@/shared/components/atoms/Button1";
 import Input1 from "@/shared/components/atoms/Input1";
 import Label1 from "@/shared/components/atoms/Label1";
 import Select1 from "@/shared/components/atoms/Select1";
-import { categories, types } from "@/shared/utils/consts";
+import { categories, types } from "@/lib/consts";
 
 export default function TransactionForm({initialData}) {
   const {
