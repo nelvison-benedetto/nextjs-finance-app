@@ -1,8 +1,9 @@
-import { sizes, variants } from "@/lib/variants"
-import Link from "next/link"
-import {ChevronLeft} from "lucide-react"
+import { sizes, variants } from '@/lib/variants'
+import Link from 'next/link'
+import { ChevronLeft } from 'lucide-react'
+import type { ReactNode } from 'react'
 
-export default function Layout({children}) {
+export default function Layout({ children }: { children: ReactNode }) {
   return <main>
     <div className="absolute left-8 top-8">
       <Link href="/" className={`${variants['ghost']} ${sizes['base']} flex items-center space-x-2 text-sm`}>

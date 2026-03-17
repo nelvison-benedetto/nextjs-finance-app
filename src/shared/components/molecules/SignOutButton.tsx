@@ -1,6 +1,6 @@
 'use client'
-import { signOut } from "@/lib/actions"
-import SubmitButton from "./submit-button"
+import { signOut } from '@/lib/actions'
+import SubmitButton from './SubmitButton'
 import { LogOut } from 'lucide-react'
 
 export default function SignOutButton() {

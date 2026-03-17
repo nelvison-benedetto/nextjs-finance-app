@@ -1,8 +1,9 @@
-import { updateSession } from './lib/supabase/middleware'
-import { createClient } from './lib/supabase/server'
+import { updateSession } from './src/lib/supabase/middleware'
+import { createClient } from './src/lib/supabase/server'
+import type { NextRequest } from 'next/server'
 
-export async function middleware(request) {
-  const { data: { user }} = await createClient().auth.getUser()
+export async function middleware(request: NextRequest) {
+  const { data: { user }} = await (await createClient()).auth.getUser()
 
   if (!user && request.nextUrl.pathname.startsWith('/dashboard')) {
     return Response.redirect(new URL('/login', request.url))

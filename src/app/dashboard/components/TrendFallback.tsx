@@ -1,4 +1,4 @@
-import Skeleton from "@/components/skeleton"
+import Skeleton from '@/shared/components/atoms/Skeleton'
 
 export default function TrendFallback() {
   return <div className="space-y-5 w-3/5 lg:w-5/6">

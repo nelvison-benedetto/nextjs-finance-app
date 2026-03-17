@@ -1,13 +1,14 @@
-import PageHeader from "@/components/page-header";
+import AppHeader from '@/shared/components/layout/AppHeader'
+import type { ReactNode } from 'react'
 
-export default function Layout({ children }) {
+export default function Layout({ children }: { children: ReactNode }) {
   return (
     <>
-      <PageHeader className="my-8" />
+      <AppHeader className="my-8" />
       <main>{children}</main>
       <footer className="mt-auto py-8 text-center">
         Footer
       </footer>
     </>
-  );
+  )
 }

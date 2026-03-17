@@ -1,14 +1,14 @@
 'use client'
-import DateRangeSelect from "@/components/date-range-select"
-import { usePathname, useRouter, useSearchParams } from "next/navigation"
+import DateRangeSelect from '@/shared/components/atoms/DateRangeSelect'
+import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 
-export default function Range({ defaultView }) {
+export default function Range({ defaultView }: { defaultView?: string }) {
   const searchParams = useSearchParams()
   const pathname = usePathname()
   const { replace } = useRouter()
   const range = searchParams.get('range') ?? defaultView ?? 'last30days'
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const params = new URLSearchParams()
     params.set('range', e.target.value)
     replace(`${pathname}?${params.toString()}`)

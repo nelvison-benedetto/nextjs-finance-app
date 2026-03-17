@@ -1,10 +1,10 @@
 'use client'
-import AlertError from "@/components/alert-error"
-import AlertSuccess from "@/components/alert-success"
-import Input from "@/components/input"
-import SubmitButton from "@/components/submit-button"
-import { uploadAvatar } from "@/lib/actions"
-import { useFormState } from 'react-dom'
+import AlertError from '@/shared/components/molecules/AlertError'
+import AlertSuccess from '@/shared/components/molecules/AlertSuccess'
+import Input1 from '@/shared/components/atoms/Input1'
+import SubmitButton from '@/shared/components/molecules/SubmitButton'
+import { uploadAvatar } from '@/lib/actions'
+import { useActionState } from 'react'
 
 const initialState = {
   message: '',
@@ -12,7 +12,7 @@ const initialState = {
 }
 
 export default function Page() {
-  const [state, formAction] = useFormState(uploadAvatar, initialState)
+  const [state, formAction] = useActionState(uploadAvatar, initialState)
   return <>
     <h1 className="text-4xl font-semibold mb-8">
       Avatar
@@ -20,7 +20,7 @@ export default function Page() {
     <form className="space-y-4" action={formAction}>
       {state?.error && <AlertError>{state?.message}</AlertError>}
       {!state?.error && state?.message.length > 0 && <AlertSuccess>{state?.message}</AlertSuccess>}
-      <Input type="file" name="file" id="file" />
+      <Input1 type="file" name="file" id="file" />
       <SubmitButton>Upload Avatar</SubmitButton>
     </form>
   </>

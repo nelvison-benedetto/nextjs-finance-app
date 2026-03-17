@@ -1,20 +1,22 @@
-import { Suspense } from "react"
-import TransactionListFallback from "./components/transaction-list-fallback"
-import Trend from "./components/trend"
-import TrendFallback from "./components/trend-fallback"
+import { Suspense } from 'react'
+import TransactionListFallback from './components/TransactionListFallback'
+import Trend from './components/Trend'
+import TrendFallback from './components/TrendFallback'
 import Link from 'next/link'
 import { PlusCircle } from 'lucide-react'
-import { sizes, variants } from "@/lib/variants"
-import { ErrorBoundary } from "react-error-boundary";
-import { types } from "@/lib/consts"
-import Range from "./components/range"
-import TransactionListWrapper from "./components/transaction-list-wrapper"
-import { createClient } from "@/lib/supabase/server"
+import { sizes, variants } from '@/lib/variants'
+import { ErrorBoundary } from 'react-error-boundary'
+import { types } from '@/lib/consts'
+import Range from './components/Range'
+import TransactionListWrapper from './components/TransactionListWrapper'
+import { createClient } from '@/lib/supabase/server'
 
-export default async function Page({ searchParams }) {
-  const supabase = createClient()
-  const { data: { user: { user_metadata: settings } } } = await supabase.auth.getUser()
-  const range = searchParams?.range ?? settings?.defaultView ?? 'last30days'
+export default async function Page({ searchParams }: { searchParams: Promise<{ range?: string }> }) {
+  const supabase = await createClient()
+  const { data: { user } } = await supabase.auth.getUser()
+  const settings = user?.user_metadata ?? {}
+  const params = await searchParams
+  const range = params?.range ?? settings?.defaultView ?? 'last30days'
 
   return (<div className="space-y-8">
     <section className="flex justify-between items-center">

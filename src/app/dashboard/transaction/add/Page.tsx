@@ -1,4 +1,4 @@
-import TransactionForm from "../../components/transaction-form"
+import TransactionForm from "../../components/TransactionForm"
 
 export const metadata = {
   title: "Add Transaction"

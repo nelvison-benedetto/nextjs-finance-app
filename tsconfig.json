@@ -29,6 +29,6 @@
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
     "**/*.mts"
-, "src/shared/hooks/useServerDarkMode.ts"  ],
-  "exclude": ["node_modules"]
+  ],
+  "exclude": ["node_modules", "seed.ts"]
 }

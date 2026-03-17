@@ -1,22 +1,22 @@
 import Link from 'next/link'
-import DarkModeToggle from './dark-mode-toggle'
-import useServerDarkMode from '@/hooks/use-server-dark-mode'
+import ToggleDarkMode from '@/shared/components/molecules/ToggleDarkMode'
+import { getServerTheme } from '@/shared/hooks/useServerDarkMode'
 import { createClient } from '@/lib/supabase/server'
 import { KeyRound } from 'lucide-react'
 import { sizes, variants } from '@/lib/variants'
-import SignOutButton from './sign-out-button'
-import Avatar from './avatar'
+import SignOutButton from '@/shared/components/molecules/SignOutButton'
+import Avatar from '@/shared/components/molecules/Avatar'
 
-export default async function AppHeader({ className }) {
-  const theme = useServerDarkMode()
-  const supabase = createClient()
+export default async function AppHeader({ className }: { className?: string }) {
+  const theme = await getServerTheme()
+  const supabase = await createClient()
   const { data: { user }, error } = await supabase.auth.getUser()
   return (
-    <header className={`flex justify-between items-center ${className}`}>
+    <header className={`flex justify-between items-center ${className ?? ''}`}>
       <Link href="/dashboard" className="text-xl hover:underline underline-offset-8 decoration-2">Finance App</Link>
 
       <div className="flex items-center">
-        <DarkModeToggle defaultMode={theme} />
+        <ToggleDarkMode defaultMode={theme} />
         {user && <Link href="/dashboard/settings" className={`flex items-center space-x-1 ${variants['ghost']} ${sizes['sm']}`}>
           <Avatar />
           <span>{user?.user_metadata?.fullName ?? user?.email}</span>

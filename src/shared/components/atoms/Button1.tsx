@@ -1,7 +1,7 @@
 import { ButtonHTMLAttributes } from "react";
 import { variants, sizes } from "@/lib/variants";
 
-type ButtonVariant = "default" | "outline" | "ghost";
+type ButtonVariant = "default" | "outline" | "ghost" | "danger";
 type ButtonSize = "xs" | "sm" | "base" | "lg";
 
 type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {

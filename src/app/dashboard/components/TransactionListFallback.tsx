@@ -1,4 +1,4 @@
-import Skeleton from "@/components/skeleton"
+import Skeleton from '@/shared/components/atoms/Skeleton'
 
 export default function TransactionListFallback() {
   return <div className="space-y-8">
@@ -9,7 +9,7 @@ export default function TransactionListFallback() {
       <TransactionItemSkeleton />
       <TransactionItemSkeleton />
     </div>
-    
+
     <div className="space-y-4">
       <TransactionSummaryItemSkeleton />
       <TransactionItemSkeleton />
