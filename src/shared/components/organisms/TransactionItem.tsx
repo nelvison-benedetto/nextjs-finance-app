@@ -1,7 +1,7 @@
 import { formatCurrency } from '@/lib/formatCurrency'
 import { HandCoins, Wallet, Landmark, PiggyBank, Pencil } from 'lucide-react'
 import type { ElementType } from 'react'
-import Link from 'next/link'
+import Link from 'next/link'  //X REDIRECTION
 import { variants, sizes } from '@/lib/variants'
 import TransactionItemRemoveButton from '@/shared/components/molecules/TransactionItemRemoveButton'
 
