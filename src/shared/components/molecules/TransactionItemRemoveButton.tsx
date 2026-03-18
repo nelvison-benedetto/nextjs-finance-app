@@ -25,7 +25,8 @@ export default function TransactionItemRemoveButton({ id, onRemoved }: Transacti
       setLoading(false)
     }
   }
-  return <Button1 size="xs" variant={!confirmed ? 'ghost' : 'danger'} onClick={handleClick} aria-disabled={loading}>
+
+  return <Button1 size="xs" variant={!confirmed ? 'ghost' : 'danger'} onClick={handleClick} disabled={loading} aria-disabled={loading}> {/*se sta caricando, disabilita il button, aria-disabled a true vuol dire viene segnalato diabilitato agli screen readers*/}
     {!loading && <X className="w-4 h-4" />}
     {loading && <Loader className="w-4 h-4 animate-spin" />}
   </Button1>
