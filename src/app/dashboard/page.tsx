@@ -14,7 +14,7 @@ import { createClient } from '@/lib/supabase/server'
 export default async function Page({ searchParams }: { searchParams: Promise<{ range?: string }> }) {
   const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
-  const settings = user?.user_metadata ?? {}
+  const settings = user?.user_metadata ?? {}  //se user proprio non esiste, allora defaults sara undefined
   const params = await searchParams
   const range = params?.range ?? settings?.defaultView ?? 'last30days'
 
