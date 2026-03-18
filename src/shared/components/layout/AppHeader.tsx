@@ -18,11 +18,11 @@ export default async function AppHeader({ className }: { className?: string }) {
       <div className="flex items-center">
         <ToggleDarkMode defaultMode={theme} />
         {user && <Link href="/dashboard/settings" className={`flex items-center space-x-1 ${variants['ghost']} ${sizes['sm']}`}>
-          <Avatar />
-          <span>{user?.user_metadata?.fullName ?? user?.email}</span>
+        <Avatar />
+        <span>{user?.user_metadata?.fullName ?? user?.email}</span>
         </Link>}
-        {user && <SignOutButton />}
-        {!user && <Link href="/login" className={`${variants['ghost']} ${sizes['sm']}`}>
+          {user && <SignOutButton />}
+          {!user && <Link href="/login" className={`${variants['ghost']} ${sizes['sm']}`}>
           <KeyRound className="w-6 h-6" />
         </Link>}
       </div>
