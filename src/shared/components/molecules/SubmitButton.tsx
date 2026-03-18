@@ -6,7 +6,7 @@ import type { ComponentProps } from 'react'
 type SubmitButtonProps = ComponentProps<typeof Button1>
 
 export default function SubmitButton(props: SubmitButtonProps) {
-  const { pending } = useFormStatus()
+  const { pending } = useFormStatus()  //GET THE STATUS OF THE FORM!!
   return <Button1 {...props} className={`${props.className ?? ''} flex items-center justify-center space-x-1`} disabled={pending}>
     {pending && <Loader className="animate-spin w-4 h-4" />}
     <span>{props.children}</span>
