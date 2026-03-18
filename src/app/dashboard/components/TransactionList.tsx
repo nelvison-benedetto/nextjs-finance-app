@@ -46,8 +46,8 @@ export default function TransactionList({ range, initialTransactions }: { range:
       {Object.entries(grouped)
         .map(([date, { transactions, amount }]) =>   //sto iterando { "2026-03-10": {...}, "2026-03-20": {...}, }
           <div key={date}>
-            <TransactionSummaryItem date={date} amount={amount} />
-            <Separator1 />
+            <TransactionSummaryItem date={date} amount={amount} />  {/*mostra totale gironaliero*/}
+            <Separator1 />  {/*space hr*/}
             <section className="space-y-4">
               {transactions.map(transaction => <div key={transaction.id}>
                 <TransactionItem {...transaction} onRemoved={handleRemoved(transaction.id)} />
