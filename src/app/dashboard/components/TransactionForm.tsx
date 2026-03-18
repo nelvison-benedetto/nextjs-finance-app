@@ -1,7 +1,7 @@
 'use client'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { useRouter } from 'next/navigation'
+import { useRouter } from 'next/navigation'  //per redirect dopo submit
 import { useState } from 'react'
 import { transactionSchema } from '@/lib/validation'
 import { createTransaction, updateTransaction } from '@/lib/actions'
@@ -16,26 +16,27 @@ import type { z } from 'zod'
 type TransactionFormInput = z.input<typeof transactionSchema>
 type TransactionFormOutput = z.output<typeof transactionSchema>
 
-type TransactionInitialData = TransactionFormOutput & { id: number }
+type TransactionInitialData = TransactionFormOutput & { id: number }  //serve per editing
 
 export default function TransactionForm({ initialData }: { initialData?: TransactionInitialData }) {
   const {
-    register,
+    register,  //collega input al form
     handleSubmit,
-    watch,
-    setValue,
+    watch,  //osserva valori in tempo reale
+    setValue,  //cambia valore manualmente
     formState: { errors },
   } = useForm<TransactionFormInput, unknown, TransactionFormOutput>({
-    mode: 'onTouched',
-    resolver: zodResolver(transactionSchema),
+    mode: 'onTouched',  //valida solo quando il campo viene toccato
+    resolver: zodResolver(transactionSchema),  //USA ZOD X VALIDARE
     defaultValues: initialData ?? {
-      created_at: new Date().toISOString().split('T')[0]
+      created_at: new Date().toISOString().split('T')[0]  //data attuale e.g. "2024-01-01T10:30:00" diventa "2024-01-01"
     }
   })
+
   const router = useRouter()
-  const [isSaving, setSaving] = useState(false)
-  const [lastError, setLastError] = useState<{ message: string } | null>(null)
-  const type = watch('type')
+  const [isSaving, setSaving] = useState(false)  //loading submit
+  const [lastError, setLastError] = useState<{ message: string } | null>(null)  //errore server
+  const type = watch('type')  //osservi il campo type
   const editing = Boolean(initialData)
 
   const onSubmit = async (data: TransactionFormOutput) => {
@@ -47,7 +48,7 @@ export default function TransactionForm({ initialData }: { initialData?: Transac
       } else {
         await createTransaction(data)
       }
-      router.push('/dashboard')
+      router.push('/dashboard')   //redirect dopo successo
     } catch (error) {
       setLastError(error as { message: string })
     } finally {
@@ -57,15 +58,16 @@ export default function TransactionForm({ initialData }: { initialData?: Transac
 
   return <form className="space-y-4" onSubmit={handleSubmit(onSubmit)}>
     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      
       <div>
         <Label1 className="mb-1">Type</Label1>
         <Select1 {...register('type', {
           onChange: (e) => {
             if (e.target.value !== 'Expense') {
-              setValue('category', '')
-            }
+              setValue('category', '')   
+            }  //reset category se non è Expense
           }
-        })}>
+        })}>  {/*collega input -> form*/}
           {types.map(t => <option key={t}>{t}</option>)}
         </Select1>
         <FormError error={errors.type} />

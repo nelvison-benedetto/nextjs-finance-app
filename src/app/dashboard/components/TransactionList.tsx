@@ -15,36 +15,36 @@ type Transaction = {
   description: string
   amount: number
   created_at: string
-}
+}  //definisco la struttura di una transaction
 
 export default function TransactionList({ range, initialTransactions }: { range: string; initialTransactions: Transaction[] }) {
-  const [transactions, setTransactions] = useState<Transaction[]>(initialTransactions)
-  const [buttonHidden, setButtonHidden] = useState(initialTransactions.length === 0)
-  const [loading, setLoading] = useState(false)
-  const grouped = groupAndSumTransactionsByDate(transactions)
+  const [transactions, setTransactions] = useState<Transaction[]>(initialTransactions)  //lista completa nel client
+  const [buttonHidden, setButtonHidden] = useState(initialTransactions.length === 0)  //mostra/nasconde button Load More
+  const [loading, setLoading] = useState(false)   //loading stato
+  const grouped = groupAndSumTransactionsByDate(transactions)   //grouping
 
-  const handleClick = async () => {
+  const handleClick = async () => {  //login LOAD MORE, sto facendo paginazione
     setLoading(true)
     try {
-      const nextTransactions: Transaction[] = await fetchTransactions(range, transactions.length, 10)
-      setButtonHidden(nextTransactions.length === 0)
+      const nextTransactions: Transaction[] = await fetchTransactions(range, transactions.length, 10)  //fetcha i prossimi 10
+      setButtonHidden(nextTransactions.length === 0)  //se non arrivano nuovi dati -> nascondi il button
       setTransactions(prevTransactions => [
         ...prevTransactions,
         ...nextTransactions
-      ])
+      ])  //sto facendo append, non replace.
     } finally {
       setLoading(false)
     }
   }
 
-  const handleRemoved = (id: number) => () => {
+  const handleRemoved = (id: number) => () => {  //return a function. rimuove elemento dalla lista.
     setTransactions(prev => [...prev].filter(t => t.id !== id))
   }
 
   return (
     <div className="space-y-8">
       {Object.entries(grouped)
-        .map(([date, { transactions, amount }]) =>
+        .map(([date, { transactions, amount }]) =>   //sto iterando { "2026-03-10": {...}, "2026-03-20": {...}, }
           <div key={date}>
             <TransactionSummaryItem date={date} amount={amount} />
             <Separator1 />
@@ -66,4 +66,5 @@ export default function TransactionList({ range, initialTransactions }: { range:
       </div>}
     </div>
   )
+
 }
